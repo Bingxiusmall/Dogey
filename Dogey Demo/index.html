@@ -13,6 +13,77 @@
 				element.style.display = 'none';
 				window.alert("Copy successfully");
 			}
+			function addCookie(){
+				var element = document.getElementById('Dogey input');
+				value = element.value;
+				element = document.getElementById('filenameinput');
+				name = element.value;
+				if(name == "")
+					window.alert("Please write filename :(");
+				else if(name.indexOf("=") != -1)
+					window.alert("Filename can't have '=' :(");
+				else if(name.indexOf(";") != -1)
+					window.alert("Filename can't have ';' :(");
+				else{
+					document.cookie = name + "=" + value;
+					hidefileinput();
+					window.alert("Project saved");
+				}
+			}
+			function filename(){
+				var element = document.getElementById('filenameinput');
+				element.style.display = 'block';
+				element = document.getElementById('clicktosave');
+				element.style.display = 'block';
+			}
+			function hidefileinput(){
+				var element = document.getElementById('filenameinput');
+				element.style.display = 'none';
+				element = document.getElementById('clicktosave');
+				element.style.display = 'none';
+			}
+			function getCookieList(){
+				if (document.cookie == '')
+					return {};
+				return document.cookie.split('; ');
+			}
+			function readfile(){
+				var element = document.getElementById('readfilename');
+				element.style.display = 'block';
+				element = document.getElementById('clicktoread');
+				element.style.display = 'block';
+			}
+			function readcookie(filename){
+				var Cookielist = getCookieList();
+				var cookielen = Cookielist.length;
+				for(var i=0;i<cookielen;i++){
+					var cookie = Cookielist[i].split('=');
+					if(cookie[0] == filename)
+						return cookie[1];
+				}
+				return undefined;
+			}
+			function hidereadingfile(){
+				var element = document.getElementById('readfilename');
+				element.style.display = 'none';
+				element = document.getElementById('clicktoread');
+				element.style.display = 'none';
+			}
+			function readfileincookie(){
+				var element = document.getElementById('readfilename');
+				var filename = element.value;
+				file = readcookie(filename);
+				if(file == undefined)
+					window.alert('There\'s no file named [' + filename + '], please try another one');
+				else{
+					element = document.getElementById('Dogey input');
+					element.value = file;
+					element = document.getElementById('filenameinput');
+					element.value = filename;
+					hidereadingfile();
+					window.alert('Reading successfully');
+				}
+			}
 		</script>
 		<style>
 			body {
@@ -60,6 +131,14 @@ doge doge    doge   doge doge  doge doge   doge    doge  DOGE   doge  doge doge 
 to print 'Hello, world!' :)
 		</h3>
 		<button id='run' style="color: red;">click to run</button>
+		<br>
+		<button id='save' style="color: green;" onclick="filename();">click to save(to Cookie)</button>
+		<input id='filenameinput' style="display:none;" placeholder="write filename here"></input>
+		<button id='clicktosave' style="color: green;display:none;" onclick="addCookie()">save project</button>
+		<br>
+		<button id='read' style="color: green;" onclick="readfile();">click to read file(in Cookie)</button>
+		<input id='readfilename' style="display:none;" placeholder="write filename here"></input>
+		<button id='clicktoread' style="color: green;display:none;" onclick="readfileincookie()">read project</button>
 		<br>
 		<h3>
 main.dogey
