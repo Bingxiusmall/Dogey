@@ -11,7 +11,7 @@ This is Dogey Python Demo, copy it to python to run.
 
 # [Dogey Demo](https://github.com/Bingxiusmall/Dogey/blob/main/Dogey%20Demo/index.html)
 
-Download [here](https://github.com/Bingxiusmall/Dogey/releases/tag/Dogey_Demo_version2.0) or do online [here](https://bingxiusmall.github.io/Dogey%20Demo/)
+Download [here](https://github.com/Bingxiusmall/Dogey/releases/tag/Dogey_Demo_version3.0) or do online [here](https://bingxiusmall.github.io/Dogey%20Demo/)
 
 Use this Demo to run Dogey project easier online.
 
